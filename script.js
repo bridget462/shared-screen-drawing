@@ -29,7 +29,7 @@ function responsiveCanvas() {
   resizeCanvas(videoRect.width, videoRect.height);
   canvas.position(videoRect.x, videoRect.y);
   canvas.style("z-index", "1");
-  background("rgba(255, 0, 255, 0.5)");
+  // background("rgba(255, 0, 255, 0.5)");
 }
 
 function windowResized() {
@@ -37,12 +37,17 @@ function windowResized() {
 }
 
 function mouseDragged() {
-  if (videoRect === undefined) {
+  if (videoRect === undefined || videoElement.srcObject === null) {
     return null;
   }
+  // TODO share with others
   proportionalMouseX = mouseX / videoRect.width;
   proportionalMouseY = mouseY / videoRect.height;
   console.log(proportionalMouseX, proportionalMouseY);
+
+  strokeWeight(4);
+  stroke("rgb(0,255,0)");
+  line(mouseX, mouseY, pmouseX, pmouseY);
 }
 
 // Prompt to select media stream, pass to video element and play
