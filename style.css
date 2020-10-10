@@ -11,4 +11,21 @@ body {
   justify-content: center;
   align-items: center;
   background: whitesmoke;
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  width: 120px;
+  height: 75px;
+  font-size: 25px;
+  color: white;
+  background: #292929;
+  border: none;
+  border-radius: 20px;
+}
+
+button:active {
+  transform: translateY(4px);
 }
