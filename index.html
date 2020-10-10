@@ -11,10 +11,15 @@
       href="https://www.google.com/s2/favicons?domain=css-tricks.com"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="./libraries/p5.js"></script>
+    <script src="./libraries/addons/p5.sound.min.js"></script>
   </head>
   <body>
     <!-- Video -->
-    <video id="video" controls height="360" width="640"></video>
+    <div class="video-container">
+      <video id="video" controls></video>
+    </div>
+    <div id="canvas-container"></div>
     <!-- Button -->
     <div class="button-container">
       <button id="start-btn">Start</button>

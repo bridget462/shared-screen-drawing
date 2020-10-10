@@ -1,6 +1,8 @@
 const videoElement = document.getElementById("video");
 const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
+let videoRect; // store video position
+let canvas;
 
 const gdmOptions = {
   video: {
@@ -13,6 +15,25 @@ const gdmOptions = {
   },
 };
 
+function setup() {
+  // initial canvas is not visible so size doesn't matter
+  canvas = createCanvas(360, 120);
+  canvas.hide();
+}
+
+function responsiveCanvas() {
+  videoRect = videoElement.getBoundingClientRect();
+
+  resizeCanvas(videoRect.width, videoRect.height);
+  canvas.position(videoRect.x, videoRect.y);
+  canvas.style("z-index", "1");
+  background("rgba(255, 0, 255, 0.5)");
+}
+
+function windowResized() {
+  responsiveCanvas();
+}
+
 // Prompt to select media stream, pass to video element and play
 async function startStream() {
   try {
@@ -22,6 +43,8 @@ async function startStream() {
     videoElement.srcObject = mediaStream;
     videoElement.onloadedmetadata = () => {
       videoElement.play();
+      responsiveCanvas();
+      canvas.show();
     };
   } catch (error) {
     console.log(`whops!: ${error}`);
@@ -33,6 +56,7 @@ function stopStream() {
     let tracks = videoElement.srcObject.getTracks();
     tracks.forEach((track) => track.stop());
     videoElement.srcObject = null;
+    canvas.hide();
   } else {
     return "no stream is active";
   }
