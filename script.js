@@ -3,7 +3,11 @@ const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 let videoRect; // store video position
 let canvas;
-let proportionalMouseX; // mouse coordinate divided by canvas size
+
+// mouse coordinate divided by canvas size
+let proportionalPMouseX;
+let proportionalPMouseY;
+let proportionalMouseX;
 let proportionalMouseY;
 
 const gdmOptions = {
@@ -41,9 +45,16 @@ function mouseDragged() {
     return null;
   }
   // TODO share with others
+  proportionalPMouseX = pmouseX / videoRect.width;
+  proportionalPMouseY = pmouseY / videoRect.height;
   proportionalMouseX = mouseX / videoRect.width;
   proportionalMouseY = mouseY / videoRect.height;
-  console.log(proportionalMouseX, proportionalMouseY);
+  console.log(
+    proportionalPMouseX,
+    proportionalPMouseY,
+    proportionalMouseX,
+    proportionalMouseY
+  );
 
   strokeWeight(4);
   stroke("rgb(0,255,0)");
