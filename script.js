@@ -3,6 +3,8 @@ const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 let videoRect; // store video position
 let canvas;
+let proportionalMouseX; // mouse coordinate divided by canvas size
+let proportionalMouseY;
 
 const gdmOptions = {
   video: {
@@ -32,6 +34,15 @@ function responsiveCanvas() {
 
 function windowResized() {
   responsiveCanvas();
+}
+
+function mouseDragged() {
+  if (videoRect === undefined) {
+    return null;
+  }
+  proportionalMouseX = mouseX / videoRect.width;
+  proportionalMouseY = mouseY / videoRect.height;
+  console.log(proportionalMouseX, proportionalMouseY);
 }
 
 // Prompt to select media stream, pass to video element and play
