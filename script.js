@@ -29,10 +29,13 @@ async function startStream() {
 }
 
 function stopStream() {
-  let tracks = videoElement.srcObject.getTracks();
-
-  tracks.forEach((track) => track.stop());
-  videoElement.srcObject = null;
+  if (videoElement.srcObject !== null) {
+    let tracks = videoElement.srcObject.getTracks();
+    tracks.forEach((track) => track.stop());
+    videoElement.srcObject = null;
+  } else {
+    return "no stream is active";
+  }
 }
 
 startBtn.addEventListener("click", startStream);
