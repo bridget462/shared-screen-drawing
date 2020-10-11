@@ -1,0 +1,22 @@
+{
+  "name": "shared-screen-drawing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bridget462/shared-screen-drawing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bridget462/shared-screen-drawing/issues"
+  },
+  "homepage": "https://github.com/bridget462/shared-screen-drawing#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
